@@ -22,24 +22,28 @@ class Shell:
         )
         self.encoding = sys.stdin.encoding
 
-    def run(self, command: str) -> str:
-        print("Writing to stdin...")
-        self.shell.stdin.write(command.encode(self.encoding))
-        print("Written\nWaiting for output...")
-        self.shell.wait(5)
-        print("Received\nDecoding...")
-        result = self.shell.stdout.readline().decode(self.encoding)
-        errors = self.shell.stderr.readline().decode(self.encoding)
-        return result
+#    def run(self, command: str) -> str:
+#        print("Writing to stdin...")
+#        self.shell.stdin.write(command.encode(self.encoding))
+#        print("Written\nWaiting for output...")
+#        self.shell.wait(5)
+#        print("Received\nDecoding...")
+#        result = self.shell.stdout.readline().decode(self.encoding)
+#        errors = self.shell.stderr.readline().decode(self.encoding)
+#        return result
 
 
 def main():
     print("Creating shell...")
-    sh = Shell()
+    #sh = Shell()
     print("Created")
 
     print("Running 'dir'")
-    res = sh.run("dir")
+    res = subprocess.run(["dir"], capture_output=True, text=True, shell=True).stdout
+    print(res)
+    res = subprocess.run(["cd .."], capture_output=True, text=True, shell=True).stdout
+    print(res)
+    res = subprocess.run(["dir"], capture_output=True, text=True, shell=True).stdout
     print(res)
     pass
 
