@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-from typing import List
 
 
 def get_slice(content: str, piece: str):

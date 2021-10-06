@@ -35,7 +35,7 @@ class Shell:
 
 def main():
     print("Creating shell...")
-    #sh = Shell()
+    # sh = Shell()
     print("Created")
 
     print("Running 'dir'")
