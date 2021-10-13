@@ -31,12 +31,20 @@ def decode_2nd_line(content: str, slices: str) -> str:
     return result
 
 
+def problem2():
+    content = read_file("assignment3_2.txt")
+    res = ",".join([x.strip() for x in content])
+    [print(x.capitalize()) for x in res.split(',')]
+
+
 def main():
     content = read_file("assignment3_1.txt")
     slices = decode_1st_line(content.splitlines()[0])
     print(f"Found slices: {slices}")
     result = decode_2nd_line(content.splitlines()[2], slices)
     print(result)
+    print("\n--------------\n")
+    problem2()
 
 
 if __name__ == "__main__":
